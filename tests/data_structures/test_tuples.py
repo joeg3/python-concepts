@@ -1,0 +1,1 @@
+# A tuple is an ordered immutable collection of objects
