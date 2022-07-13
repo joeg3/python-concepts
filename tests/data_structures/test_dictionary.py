@@ -3,6 +3,7 @@
 # Insertion order is not maintained with a dictionary
 
 empty = {} # This is initialized as an empty dictionary
+empty_dict = dict()   # Can also use Python's built in function to create an empty dictionary
 
 person = { 'Name': 'Jim',
            'Gender': 'Male',
