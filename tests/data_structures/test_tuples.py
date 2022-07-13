@@ -1,5 +1,7 @@
 # A tuple is an ordered immutable collection of objects
 
+empty_tuple = tuple()   # Can use Python's built in function to create an empty tuple
+
 vowels = ('a', 'e', 'i', 'o', 'u') # This is a tuple and not a list because it uses parens instead of square brackets
 
 def test_tuple_basics():

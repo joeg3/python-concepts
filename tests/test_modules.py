@@ -1,3 +1,10 @@
+# There are three locations the interpreter searches when looking for a module:
+# 1. Your current working directory
+# 2. Your interpreter's site-packages locations. These are folders that contain any thire-party Python modules
+#    you installed, including your own.
+# 3. The standard library
+# The interpreter looks in your current working directory first.
+
 # Two ways to import. The first one, we would call os.getcwd(), the second one, we can just do getcwd()
 # The first way is sometimes better because if there was another module where we imported getcwd, Python wouldn't 
 # know from which module we want to invoke getcwd().

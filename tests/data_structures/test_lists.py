@@ -9,6 +9,7 @@
 # These are called literal lists where they are created with literal values
 nums = [ 1, 2, 3]
 chars = [ ]   # Empty list
+empty_list = list()   # Can also use Python's built in function to create an empty list
 
 list_of_lists = [nums, chars]
 another = [[1,2,3],['a','b','c']]

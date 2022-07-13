@@ -2,6 +2,8 @@
 # Even though sets use curly braces, they are not key/value pairs, just unique values
 # You cannot assume any order with a set
 
+empty_set = set()   # Can use Python's built in function to create an empty set
+
 def test_create_set():
     vowels = {'a', 'e', 'e', 'i', 'o', 'o', 'u'} # Creates  {'a', 'e', 'i', 'o', 'u') but probably different order
     vowels = set('aeeioou')                      # Does same thing as previous line
