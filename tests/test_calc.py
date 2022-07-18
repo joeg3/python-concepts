@@ -1,7 +1,7 @@
-#import calc
+from src import calc
 
-# def test_add():
-#     assert calc.add(1,1) == 2
+def test_add():
+     assert calc.add(1,1) == 2
 
 def test_equal():
     x = 3

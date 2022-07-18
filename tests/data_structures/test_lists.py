@@ -76,11 +76,19 @@ def test_remove_by_position():
     letter = letters.pop(0)    # Can pass index position
     assert letter == 'a'
     assert letters == ['b','c','b']
+    del letters[1]             # Use del() to also remove by index
+    assert letters == ['b','b']
+
 
 def test_combine_two_lists():
     letters = ['a','b','c']
     letters.extend(['x','y','z'])
     assert letters == ['a','b','c','x','y','z']
+
+def test_change_list_value():
+    nums = [1, 99, 3]
+    nums[1] = 2
+    assert nums == [1,2,3]
 
 def test_append_to_list():
     nums = [1,2]

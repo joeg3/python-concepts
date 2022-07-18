@@ -5,7 +5,8 @@
 # 3. The standard library
 # The interpreter looks in your current working directory first.
 
-# Two ways to import. The first one, we would call os.getcwd(), the second one, we can just do getcwd()
+# Two ways to import. The first one, we would call os.getcwd(), the second one, we can just do getcwd().
+# Note in the second one, os is not visible, just getcwd().
 # The first way is sometimes better because if there was another module where we imported getcwd, Python wouldn't 
 # know from which module we want to invoke getcwd().
 import os             # Import os module, would have to call os.getcwd() or os.path.abspath()

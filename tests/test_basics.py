@@ -27,3 +27,13 @@ def test_bool():
 
 def test_string():
     assert "a3" == "a" + str(3) # Have to use str(), Python can't concatinate numbers and strings
+    assert 'az' == 'a' + 'z'    # But strings can concatenate
+    x = 'bcde'
+    assert 'abcde' == 'a' + x    # Concatenate a variable
+    assert 'b' == x[0]           # Get a character from a string by its index (returns a string of length 1)
+    assert 'cd' == x[1:3]        # Can also grab a slice of string (last position excluded)
+    assert 'bcd' == x[:3]        # Default first index is 0
+    assert 'cde' == x[1:]        # Default last index is end of string
+    assert 'de' == x[-2:]        # Second-last (included) to the end
+    # x[0] = 'z'                 # Python strings are immutable, can't set a character
+    assert 3 == len('abc')       # String length
