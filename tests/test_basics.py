@@ -37,3 +37,11 @@ def test_string():
     assert 'de' == x[-2:]        # Second-last (included) to the end
     # x[0] = 'z'                 # Python strings are immutable, can't set a character
     assert 3 == len('abc')       # String length
+    
+def test_string_formatting():
+    s_template = 'Hello {}!'
+    s = s_template.format('World')
+    assert s == 'Hello World!'
+    s_template = 'Hello {first} {last}!'
+    s = s_template.format(first='Freddy', last='Mercury')
+    assert s == 'Hello Freddy Mercury!'
