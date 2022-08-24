@@ -9,6 +9,25 @@ def test_print():
     person1 = { 'Name': 'Jim', 'Age': 33 }
     pprint.pprint(person1) # Use this to pretty print complex objects
 
+def test_line_continuation():
+    # Backslash is a reserved line continuation character to break up long lines of code
+    str = 'I want to have this long string \
+on two lines'
+    assert str == 'I want to have this long string on two lines'
+    num = 3 + 4 \
+          + 7
+    assert num == 14
+
+    # Can use parens for same effect:
+    num = (3 + 4
+          + 7)
+    assert num == 14
+
+def test_types():
+    assert type(4) == int
+    assert type('hi') == str # Use keyword str, not string 'str'
+    assert isinstance(5, int)
+
 def test_bool():
     """Show what values in Python evaluate to either true or false"""
     assert bool(0) == False     # int
@@ -16,6 +35,7 @@ def test_bool():
     assert bool('') == False    # empty string
     assert bool([]) == False    # empty list
     assert bool({}) == False    # empty dictionary
+    assert bool(set()) == False # empty set
     assert bool(None) == False  # Python 'None' value
 
     assert bool(1) == True               # int
@@ -24,6 +44,15 @@ def test_bool():
     assert bool('Hi') == True            # non-empty string
     assert bool([1,2]) == True           # non-empty list
     assert bool({1:'a', 2:'b'}) == True  # non-empty dictionary
+
+def test_ints():
+    assert 1_000_000 == 1000000 # Use underscore as a digit separator instead of a comma
+    assert 9 / 5 == 1.8         # Returns floating point
+    assert 9 // 5 == 1          # No remainder with //
+    assert 9 % 5 == 4           # Standard modulus
+    assert divmod(9,5) == (1,4) # Get both quotient and remainder
+    assert int(12.3) == 12      # Removes fractional part
+    assert int('123') == 123
 
 def test_string():
     assert "a3" == "a" + str(3) # Have to use str(), Python can't concatinate numbers and strings
@@ -45,3 +74,12 @@ def test_string_formatting():
     s_template = 'Hello {first} {last}!'
     s = s_template.format(first='Freddy', last='Mercury')
     assert s == 'Hello Freddy Mercury!'
+
+def test_logical_operators():
+    a = 3
+    if(2 < a and a < 5):
+        assert True
+
+    if(2 < a and not a > 5):
+        assert True
+

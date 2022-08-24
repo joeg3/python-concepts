@@ -18,6 +18,20 @@ def test_if_elif_else():
     else:
         assert nums[0] == 0
 
+def test_walrus_operator():
+    # New in Python 3.8
+
+    # Old way:
+    a = 4
+    b = 2 * 9
+    diff = a - b
+    if diff < 0:
+        print('diff < zero: ', diff)
+
+    # With walrus operator, make assignement in if statement
+    if (diff := a - b) < 0:
+        print('diff < zero: ', diff)
+
 def test_for_with_list():
     x = -1
     for i in [1, 2, 3]:
