@@ -1,5 +1,6 @@
 import pprint
 
+
 # Strings with single or double quotes cannot span multiple lines
 s1 = "Hello" # You can use double quotes for a string
 s2 = "World" # Most Python programmers use single quotes for a string
@@ -82,4 +83,3 @@ def test_logical_operators():
 
     if(2 < a and not a > 5):
         assert True
-

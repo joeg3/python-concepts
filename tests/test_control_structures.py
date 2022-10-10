@@ -79,11 +79,11 @@ def test_break():
 def test_pass():
     pass # Remember to implement later
 
-def match_example(status):
-    match status:
-        case 1:
-            return "1 has matched"
-        case 2:
-            return "2 has matched"
-        case _:
-            return "Default, anything other than 1 or 2 will match here"
+# def match_example(status):
+#     match status:
+#         case 1:
+#             return "1 has matched"
+#         case 2:
+#             return "2 has matched"
+#         case _:
+#             return "Default, anything other than 1 or 2 will match here"
