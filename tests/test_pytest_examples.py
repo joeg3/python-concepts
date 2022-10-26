@@ -22,10 +22,6 @@ def test_marked_as_sanity():
 def test_marked_as_xfail():
     assert 2 == 4
 
-# Parameters defined in the fixture
-def test_param_fixture(param_fixture):
-    print('Param printed in line above')
-
 # Parameters defined in the marker
 @pytest.mark.parametrize('a, b, final', [(1,2,3),(2,4,6),(7,8,15)])
 def test_param_with_mark(a, b, final):
