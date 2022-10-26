@@ -18,6 +18,20 @@ def test_if_elif_else():
     else:
         assert nums[0] == 0
 
+def test_walrus_operator():
+    # New in Python 3.8
+
+    # Old way:
+    a = 4
+    b = 2 * 9
+    diff = a - b
+    if diff < 0:
+        print('diff < zero: ', diff)
+
+    # With walrus operator, make assignement in if statement
+    if (diff := a - b) < 0:
+        print('diff < zero: ', diff)
+
 def test_for_with_list():
     x = -1
     for i in [1, 2, 3]:
@@ -65,11 +79,11 @@ def test_break():
 def test_pass():
     pass # Remember to implement later
 
-def match_example(status):
-    match status:
-        case 1:
-            return "1 has matched"
-        case 2:
-            return "2 has matched"
-        case _:
-            return "Default, anything other than 1 or 2 will match here"
+# def match_example(status):
+#     match status:
+#         case 1:
+#             return "1 has matched"
+#         case 2:
+#             return "2 has matched"
+#         case _:
+#             return "Default, anything other than 1 or 2 will match here"
