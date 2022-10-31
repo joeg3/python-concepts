@@ -75,6 +75,16 @@ def test_break():
     assert sum == 3
     assert x == 2
 
+def test_continue():
+    sum = 0
+    x = 0
+    while x < 5:
+        x += 1
+        if x == 3:
+            continue
+        sum += x
+    assert sum == 12
+
 # The 'pass' statement is a no-op, used where Python requires a statement, or in creating minimal classes
 def test_pass():
     pass # Remember to implement later

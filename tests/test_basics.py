@@ -1,14 +1,7 @@
-import pprint
-
 
 # Strings with single or double quotes cannot span multiple lines
 s1 = "Hello" # You can use double quotes for a string
-s2 = "World" # Most Python programmers use single quotes for a string
-
-def test_print():
-    print('Hi')
-    person1 = { 'Name': 'Jim', 'Age': 33 }
-    pprint.pprint(person1) # Use this to pretty print complex objects
+s2 = 'World' # Most Python programmers use single quotes for a string
 
 def test_line_continuation():
     # Backslash is a reserved line continuation character to break up long lines of code
@@ -23,6 +16,12 @@ on two lines'
     num = (3 + 4
           + 7)
     assert num == 14
+
+def test_multiple_variable_creation_one_line():
+    x, y, z = 3, 'hi', 7.7
+    assert x == 3
+    assert y == 'hi'
+    assert z == 7.7
 
 def test_types():
     assert type(4) == int
@@ -75,6 +74,8 @@ def test_string_formatting():
     s_template = 'Hello {first} {last}!'
     s = s_template.format(first='Freddy', last='Mercury')
     assert s == 'Hello Freddy Mercury!'
+    assert 'x = 7' == '{m} = {n}'.format(m='x', n=7)
+    t = '{m} = {n}'
 
 def test_logical_operators():
     a = 3

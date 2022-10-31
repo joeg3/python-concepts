@@ -14,6 +14,8 @@ empty_list = list()   # Can also use Python's built in function to create an emp
 list_of_lists = [nums, chars]
 another = [[1,2,3],['a','b','c']]
 
+different_types = [3, 'hi', 4.4] # A list can have different types
+
 # A list can span multiple lines for readability
 evens = [ 0, 2,
           4, 6 ]
@@ -118,7 +120,7 @@ def test_copying_lists():
 def test_select_with_bracket_notation():
     list1 = ['a','b','c','d']
     assert list1[0] == 'a' # Normal zero-based indexing
-    assert list1[-1] == 'd' # Use negative numbers to cound right to left starting at -1
+    assert list1[-1] == 'd' # Use negative numbers to count right to left starting at -1
     assert list1[-2] == 'c'
     assert "ad" == list1[0] + list1[-1] # Easy to select first or last element with index [0] or [-1]
 
