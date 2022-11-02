@@ -15,3 +15,12 @@ def config(request):
     #config['username'] = request.config.getoption('--username')
     #config['password'] = request.config.getoption('--password')
     return config
+
+@pytest.fixture(scope='function')
+def open_close_file_path(request):
+    file_name = request.param
+    print('^^^^^^^^^^^^^ About to open file')
+    file = open(file_name)
+    yield file
+    print('^^^^^^^^^^^^^ About to close file')
+    file.close()

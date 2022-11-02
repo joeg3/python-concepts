@@ -66,6 +66,12 @@ def test_string():
     assert 'de' == x[-2:]        # Second-last (included) to the end
     # x[0] = 'z'                 # Python strings are immutable, can't set a character
     assert 3 == len('abc')       # String length
+    assert 'bc' in 'abcd'        # Check if substring in another
+    assert ['1','2','3']  == '1|2|3'.split('|')
+    assert 'Hi' == '  Hi    '.strip()        # Trim before and after
+    assert 'Hi    ' == '  Hi    '.lstrip()   # Trim on left
+    assert '  Hi' == '  Hi    '.rstrip()   # Trim on right
+
     
 def test_string_formatting():
     s_template = 'Hello {}!'
