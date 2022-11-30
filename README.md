@@ -7,7 +7,8 @@
 ## Python Command Line
 - `python3 --version` checks version of python
 - `pip3 --version` checks version of pip
-- `poetry run python hello.py` runs a Python script
+- `python3 hello.py` runs the `hello.py` script
+- `poetry run python hello.py` runs a Python script in `poetry` environment
 
 ## Pytest Command Line
 - `pytest -h` to see all the command line options

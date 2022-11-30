@@ -71,15 +71,15 @@ def test_remove_by_value():
     assert letters == ['a','c','b','a']
 
 def test_remove_by_position():
-    letters = ['a','b','c','b','a']
+    letters = ['a','b','c','d','e']
     letter = letters.pop()    # No arg returns last item
-    assert letter == 'a'
-    assert letters == ['a', 'b','c','b']
+    assert letter == 'e'
+    assert letters == ['a', 'b','c','d']
     letter = letters.pop(0)    # Can pass index position
     assert letter == 'a'
-    assert letters == ['b','c','b']
-    del letters[1]             # Use del() to also remove by index
-    assert letters == ['b','b']
+    assert letters == ['b','c','d']
+    del letters[1]             # del also removes by index, but doesn't return removed vaalue like pop() does
+    assert letters == ['b','d']
 
 
 def test_combine_two_lists():
@@ -92,12 +92,13 @@ def test_change_list_value():
     nums[1] = 2
     assert nums == [1,2,3]
 
-def test_append_to_list():
+def test_insert_into_list():
+    # Append
     nums = [1,2]
     nums.append(3) # Adds to last postion
     assert nums == [1,2,3]
 
-def test_insert_into_list():
+    # Insert
     letters = ['a','b','d']
     letters.insert(2,'c') # First arg is index position to insert *before*, so use append() to add to last position
     assert letters == ['a','b','c','d']
@@ -158,3 +159,24 @@ def test_slice_list_for_loop():
         i = '_' + i
         list2.append(i)
     assert list2 == ['_a','_b','_c']
+
+def test_sorting_lists():
+    # Permanently sort list
+    list1 = ['b', 'a', 'd', 'c']
+    list1.sort()                  # Permanently changes list
+    assert list1 == ['a','b','c', 'd']
+    list1.sort(reverse=True)
+    assert list1 == ['d','c','b', 'a']
+
+    # Maintain order of original list
+    list1 = ['b', 'a', 'd', 'c']
+    list2 = sorted(list1)
+    assert list1 == ['b', 'a', 'd', 'c']
+    assert list2 == ['a','b','c', 'd']
+
+    # Reverse list order
+    list1 = ['a','b','c', 'd']
+    list1.reverse()              # Permanently changes list
+    assert list1 == ['d', 'c', 'b', 'a']
+
+

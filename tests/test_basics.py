@@ -71,6 +71,23 @@ def test_string():
     assert 'Hi' == '  Hi    '.strip()        # Trim before and after
     assert 'Hi    ' == '  Hi    '.lstrip()   # Trim on left
     assert '  Hi' == '  Hi    '.rstrip()   # Trim on right
+    url = 'https://www.ibm.com'
+    assert 'www.ibm.com' == url.removeprefix('https://')
+    assert 'Fred' == 'Fred Jr.'.removesuffix(' Jr.')
+    assert 'fred smith'.title() == 'Fred Smith'
+    assert 'fred'.upper() == 'FRED'
+    assert 'Fred'.lower() == 'fred'
+
+    # f-strings, where 'f' is for format
+    first_name = 'fred'
+    last_name = 'smith'
+    full_name = f'{first_name} {last_name}'
+    assert full_name == 'fred smith'
+    assert f'Hi {full_name.title()}!' == 'Hi Fred Smith!'
+
+    string_with_tab = 'Column1\tColumn2'
+    string_with_newline = 'Row1\nRow2'
+
 
     
 def test_string_formatting():
