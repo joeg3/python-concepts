@@ -8,8 +8,11 @@ def test_pprint():
     person1 = { 'Name': 'Jim', 'Age': 33 }
     pprint.pprint(person1) # Use this to pretty print complex objects like a dictionary
 
-# Get input from terminal (commented out)
-# word = input("Please enter a word: ")
+@pytest.mark.skip('Running this will stop execution to prompt for input')
+def test_get_input_from_terminal():
+    word = input("Please enter a word: ") # Returns a string
+    age = input("Enter your age: ")
+    age = int(age) # Convert to int
 
 # For the next two test cases, I wanted to close the file in the fixture after the test to ensure
 # it gets closed even if something went wrong during the test case. Maybe there's a better way,

@@ -3,6 +3,7 @@
 # - Lists are like arrays, can hold any type of data
 # - You don't need to declare list size or type
 # - A list can hold different types of objects
+# - Printing variable my_list which is ['a','b','c'], would write ['a','b','c'] to the terminal
 # - List methods change the list they operate on, using brackets usually does not.
 
 
@@ -26,6 +27,8 @@ def test_if_in_list():
 def test_check_non_empty_list():
     assert nums           # Python way
     assert len(nums) != 0 # Another way
+    if nums: # Common way to check if empty
+        pass
 
 def test_check_empty_list():
     assert not chars       # Python way
@@ -38,14 +41,20 @@ def test_fill_list_with_range():
     a = list(range(5, 10))
     assert a == [5,6,7,8,9]
 
-    a = list(range(0, 10, 2))
-    assert a == [0,2,4,6,8]
+    evens = list(range(0, 11, 2))
+    assert evens == [0,2,4,6,8,10]
 
     a = list(range(10, 0, -2))
     assert a == [10,8,6,4,2]
 
 def test_length_of_list():
     assert len([1,2,3,4]) == 4
+
+def test_min_max_sum_of_list():
+    nums = [1,2,3,4]
+    assert min(nums) == 1
+    assert max(nums) == 4
+    assert sum(nums) == 10
 
 def test_if_in_list():
     nums = [1,2]
@@ -80,7 +89,6 @@ def test_remove_by_position():
     assert letters == ['b','c','d']
     del letters[1]             # del also removes by index, but doesn't return removed vaalue like pop() does
     assert letters == ['b','d']
-
 
 def test_combine_two_lists():
     letters = ['a','b','c']
@@ -117,6 +125,11 @@ def test_copying_lists():
     list2.append('d')
     assert list1 == ['a','b','c']
     assert list2 == ['a','b','c','d']
+    
+    list3 = list2[:] # Another way to copy
+    list3.append('e')
+    assert list2 == ['a','b','c','d']
+    assert list3 == ['a','b','c','d', 'e']
 
 def test_select_with_bracket_notation():
     list1 = ['a','b','c','d']
@@ -125,13 +138,14 @@ def test_select_with_bracket_notation():
     assert list1[-2] == 'c'
     assert "ad" == list1[0] + list1[-1] # Easy to select first or last element with index [0] or [-1]
 
-def test_select_by_start_stop_step():
-    list1 = ['a','b','c','d','e','f','g', 'h']
+def test_slice_list():
+    list1 = ['a','b','c','d','e','f','g','h']
     # This uses a [start:stop:step] notation. Defaults: start = 0, stop = max index of list, step = 1
     assert list1[0:6:2] == ['a','c','e'] # Start at index 0, every 2nd letter, stopping at (but not including) index 6
     assert list1[2:] == ['c','d','e','f','g','h'] # Start at index 2, default step 1, default stop at end of list
     assert list1[::3] == ['a','d','g'] # Every 3rd letter
     assert list1[:3] == ['a','b','c'] # All letters up to (but not including) index 3
+    assert list1[-2:] == ['g','h']    # Last two elements
 
 def test_join_items_from_list():
     list1 = ['a','b','c','d','e','f','g', 'h']
@@ -178,5 +192,17 @@ def test_sorting_lists():
     list1 = ['a','b','c', 'd']
     list1.reverse()              # Permanently changes list
     assert list1 == ['d', 'c', 'b', 'a']
+
+def test_list_comprehension():
+    # Regular way to create a list of squares
+    squares = []
+    for num in range(1,5):
+        squares.append(num**2)
+    assert squares == [1,4,9,16]
+
+    # Same code using list comprehension
+    squares = [num**2 for num in range(1,5)]
+    assert squares == [1,4,9,16]
+
 
 

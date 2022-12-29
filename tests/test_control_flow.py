@@ -32,9 +32,16 @@ def test_walrus_operator():
     if (diff := a - b) < 0:
         print('diff < zero: ', diff)
 
-def test_for_with_list():
+def test_for_loop_with_list():
     x = -1
     for i in [1, 2, 3]:
+        x = i
+    assert x == 3
+
+def test_loop_list_range():
+    x = -1
+    nums = [1,2,3,4,5]
+    for i in nums[:3]: # Loop only through first three items in list
         x = i
     assert x == 3
 
@@ -64,6 +71,15 @@ def test_while_loop():
         x += 1
     assert sum == 10
 
+# Use a while loop to mofify a list, dictionary, etc. If you used a for loop, it could
+# get messed up from the list length changing while iterating through it.
+def test_use_while_to_modify_list():
+    nums = [1,3,6,3,5,2,3,7]
+    while 3 in nums:
+        nums.remove(3)
+
+    assert len(nums) == 5 # Removed all 3's
+
 def test_break():
     sum = 0
     x = 0
@@ -82,12 +98,8 @@ def test_continue():
         x += 1
         if x == 3:
             continue
-        sum += x
+        sum += x # This is not reached when x is 3
     assert sum == 12
-
-# The 'pass' statement is a no-op, used where Python requires a statement, or in creating minimal classes
-def test_pass():
-    pass # Remember to implement later
 
 # def match_example(status):
 #     match status:

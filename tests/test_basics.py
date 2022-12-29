@@ -3,6 +3,11 @@
 s1 = "Hello" # You can use double quotes for a string
 s2 = 'World' # Most Python programmers use single quotes for a string
 
+# To print a long line, you can break it up by quoting each line and indenting
+print("######################################"
+    " Running Basic Python Tests "
+    "########################################")
+
 def test_line_continuation():
     # Backslash is a reserved line continuation character to break up long lines of code
     str = 'I want to have this long string \
@@ -27,6 +32,11 @@ def test_types():
     assert type(4) == int
     assert type('hi') == str # Use keyword str, not string 'str'
     assert isinstance(5, int)
+
+def test_none():
+    assert not None         # In a conditional test, None evaluates to False
+    #assert None == False   # But None isn't equal to False (this will give an error)
+    assert None != True     # But None isn't equal to True  either (which makes sense)
 
 def test_bool():
     """Show what values in Python evaluate to either true or false"""
@@ -53,6 +63,7 @@ def test_ints():
     assert divmod(9,5) == (1,4) # Get both quotient and remainder
     assert int(12.3) == 12      # Removes fractional part
     assert int('123') == 123
+    assert 3 ** 2 == 9          # Use ** for exponents
 
 def test_string():
     assert "a3" == "a" + str(3) # Have to use str(), Python can't concatinate numbers and strings
@@ -78,6 +89,10 @@ def test_string():
     assert 'fred'.upper() == 'FRED'
     assert 'Fred'.lower() == 'fred'
 
+    string_with_tab = 'Column1\tColumn2'
+    string_with_newline = 'Row1\nRow2'
+
+def test_string_formatting():
     # f-strings, where 'f' is for format
     first_name = 'fred'
     last_name = 'smith'
@@ -85,12 +100,6 @@ def test_string():
     assert full_name == 'fred smith'
     assert f'Hi {full_name.title()}!' == 'Hi Fred Smith!'
 
-    string_with_tab = 'Column1\tColumn2'
-    string_with_newline = 'Row1\nRow2'
-
-
-    
-def test_string_formatting():
     s_template = 'Hello {}!'
     s = s_template.format('World')
     assert s == 'Hello World!'
@@ -100,6 +109,10 @@ def test_string_formatting():
     assert 'x = 7' == '{m} = {n}'.format(m='x', n=7)
     t = '{m} = {n}'
 
+    name = 'Jim'
+    assert 'jim' == name.lower()
+    assert 'Jim' == name # lower() doesn't alter variable, just returns lowercase value
+
 def test_logical_operators():
     a = 3
     if(2 < a and a < 5):
@@ -107,3 +120,7 @@ def test_logical_operators():
 
     if(2 < a and not a > 5):
         assert True
+
+# The 'pass' statement is a no-op, used where Python requires a statement, or in creating minimal classes
+def test_pass():
+    pass # Remember to implement later
