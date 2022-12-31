@@ -1,7 +1,8 @@
+""" It's a good practice to have a docstring at the top of modules """
+""" Modules should be lowercase with underscores separating words """
 
 def get_remainder(dividend, divisor):
-    """ Divides the divisor into the dividend and returns the remainder
-    """
+    """ Divides the divisor into the dividend and returns the remainder """
     remainder = dividend % divisor
     return remainder
 

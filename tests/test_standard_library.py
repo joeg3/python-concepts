@@ -1,18 +1,25 @@
 import datetime
+from importlib.metadata import version
 import os
-import random
+from random import choice
+from random import randint
 import sys
 import time
 
 def test_working_dir():
     cwd = os.getcwd()
-    print(cwd)
-    # Or using other way to import
-    cwd = os.getcwd()
     
-
 def test_python_level():
     assert sys.version_info[0] >= 3
+
+def test_get_python_version():
+    # Constructs something like; 3.10.9.final
+    version = f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}.{sys.version_info.releaselevel}"
+    assert version[0] == '3'
+
+def test_get_version_of_package():
+    pytest_version = version('pytest') # Returns something like: 7.1.3
+    assert pytest_version[0] == '7'
 
 def test_environment_variables():
     os.environ # All the system's environment variables
@@ -38,7 +45,13 @@ def test_datetime():
 def test_sleep():
     time.sleep(1) # Sleep for one second
 
+def test_random_choice():
+    # choice() works on both lists and tuples
+    letters = ['a','b','c','d']
+    random_letter = choice(letters)
+    assert random_letter in letters
+
 def test_random_int():
-    x = random.randint(1, 10) # Returns random integer from the inclusive range
+    x = randint(1, 10) # Returns random integer from the inclusive range
     assert x >= 1
     assert x <= 10
