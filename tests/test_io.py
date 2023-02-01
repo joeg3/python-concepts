@@ -39,7 +39,7 @@ def test_read_file_in_single_operation(open_close_file_path):
 def test_read_open_close_file_in_single_operation():
     with open('text_files/read_from_file.txt', 'r') as reader: # Use 'r' for read
         content = reader.readlines()
-        assert len(content) == 3
+        assert len(content) == 3 
     # No need to explicitly open or close the file
 
 @pytest.mark.skip('Unfinished')

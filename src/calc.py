@@ -10,6 +10,8 @@ from src.calc_module import * # Import all functions of module
 # Note, some modules have submodules
 from os import path   # Import the path submodule from the os module, can call path.abspath()
 
+""" This is just a module that relies on importing another module """
+
 def remainder_alert(dividend, divisor):
     """ Uses the import of the entire module """
     remainder = calc_module.get_remainder(dividend, divisor)

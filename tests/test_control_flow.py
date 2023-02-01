@@ -18,6 +18,24 @@ def test_if_elif_else():
     else:
         assert nums[0] == 0
 
+def test_logical_operators():
+    a = 3
+    if 2 < a and a < 5:
+        assert True
+
+    if 2 < a < 5: # Do this if 'and-ing' multiple comparisions with same variable
+        assert True
+
+    if 2 < a and not a > 5:
+        assert True
+
+def test_use_in_for_multiple_comparisons():
+    """ Instead of using a bunch of logical operators, do comparisions with in """
+    """ You can see if it's 'in' a string, list, set, tuple, or dictionary """
+    vowels = 'aeiou'
+    if 'i' in vowels:
+        assert True
+
 def test_walrus_operator():
     # New in Python 3.8
 

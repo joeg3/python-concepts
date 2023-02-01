@@ -1,12 +1,4 @@
 
-# Strings with single or double quotes cannot span multiple lines
-s1 = "Hello" # You can use double quotes for a string
-s2 = 'World' # Most Python programmers use single quotes for a string
-
-# To print a long line, you can break it up by quoting each line and indenting
-print("######################################"
-    " Running Basic Python Tests "
-    "########################################")
 
 def test_line_continuation():
     # Backslash is a reserved line continuation character to break up long lines of code
@@ -23,6 +15,11 @@ on two lines'
     assert num == 14
 
 def test_multiple_variable_creation_one_line():
+    a = b = c = 8
+    assert a == 8
+    assert b == 8
+    assert c == 8
+
     x, y, z = 3, 'hi', 7.7
     assert x == 3
     assert y == 'hi'
@@ -38,8 +35,18 @@ def test_none():
     #assert None == False   # But None isn't equal to False (this will give an error)
     assert None != True     # But None isn't equal to True  either (which makes sense)
 
+def test_type_converstion():
+    assert bool(1) == True
+    assert int(False) == 0
+    assert int(45.32) == 45
+    assert int('81') == 81
+    assert float(True) == 1.0
+    assert float(77) == 77.0
+    assert float('23') == 23.0
+    assert 16 + 5.0 == 21.0   # Adding ints and floats results in a float
+
 def test_bool():
-    """Show what values in Python evaluate to either true or false"""
+    """ The Python function bool() converts any Python data type to a boolean """
     assert bool(0) == False     # int
     assert bool(0.0) == False   # float
     assert bool('') == False    # empty string
@@ -64,62 +71,11 @@ def test_ints():
     assert int(12.3) == 12      # Removes fractional part
     assert int('123') == 123
     assert 3 ** 2 == 9          # Use ** for exponents
-
-def test_string():
-    assert "a3" == "a" + str(3) # Have to use str(), Python can't concatinate numbers and strings
-    assert 'az' == 'a' + 'z'    # But strings can concatenate
-    x = 'bcde'
-    assert 'abcde' == 'a' + x    # Concatenate a variable
-    assert 'b' == x[0]           # Get a character from a string by its index (returns a string of length 1)
-    assert 'cd' == x[1:3]        # Can also grab a slice of string (last position excluded)
-    assert 'bcd' == x[:3]        # Default first index is 0
-    assert 'cde' == x[1:]        # Default last index is end of string
-    assert 'de' == x[-2:]        # Second-last (included) to the end
-    # x[0] = 'z'                 # Python strings are immutable, can't set a character
-    assert 3 == len('abc')       # String length
-    assert 'bc' in 'abcd'        # Check if substring in another
-    assert ['1','2','3']  == '1|2|3'.split('|')
-    assert 'Hi' == '  Hi    '.strip()        # Trim before and after
-    assert 'Hi    ' == '  Hi    '.lstrip()   # Trim on left
-    assert '  Hi' == '  Hi    '.rstrip()   # Trim on right
-    url = 'https://www.ibm.com'
-    assert 'www.ibm.com' == url.removeprefix('https://')
-    assert 'Fred' == 'Fred Jr.'.removesuffix(' Jr.')
-    assert 'fred smith'.title() == 'Fred Smith'
-    assert 'fred'.upper() == 'FRED'
-    assert 'Fred'.lower() == 'fred'
-
-    string_with_tab = 'Column1\tColumn2'
-    string_with_newline = 'Row1\nRow2'
-
-def test_string_formatting():
-    # f-strings, where 'f' is for format
-    first_name = 'fred'
-    last_name = 'smith'
-    full_name = f'{first_name} {last_name}'
-    assert full_name == 'fred smith'
-    assert f'Hi {full_name.title()}!' == 'Hi Fred Smith!'
-
-    s_template = 'Hello {}!'
-    s = s_template.format('World')
-    assert s == 'Hello World!'
-    s_template = 'Hello {first} {last}!'
-    s = s_template.format(first='Freddy', last='Mercury')
-    assert s == 'Hello Freddy Mercury!'
-    assert 'x = 7' == '{m} = {n}'.format(m='x', n=7)
-    t = '{m} = {n}'
-
-    name = 'Jim'
-    assert 'jim' == name.lower()
-    assert 'Jim' == name # lower() doesn't alter variable, just returns lowercase value
-
-def test_logical_operators():
-    a = 3
-    if(2 < a and a < 5):
-        assert True
-
-    if(2 < a and not a > 5):
-        assert True
+    a = b = 7
+    a -= 2
+    b += 3
+    assert a == 5
+    assert b == 10
 
 # The 'pass' statement is a no-op, used where Python requires a statement, or in creating minimal classes
 def test_pass():
