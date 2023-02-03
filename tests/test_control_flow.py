@@ -70,6 +70,7 @@ def test_for_with_string():
     assert c == 'd'
 
 def test_for_with_range_default():
+    """ You can use range() in a for loop to create a stream of a large data set without having to create it """
     x = 0
     for i in range(5): # Specify to run loop 5 times, by default starting at zero and incrmenting by one each iteration
         x += i
@@ -106,6 +107,21 @@ def test_break():
         if sum >= 3:
             break
         x += 1
+    assert sum == 3
+    assert x == 2
+
+def test_break_with_else():
+    """ This example is contrived and you'll never enter the else block, just wanted to show a way to check if break was never called """
+    """ You similarly also use an else to check for a break with a for loop """
+    sum = 0
+    x = 0
+    while x < 5:
+        sum += x
+        if sum >= 3:
+            break
+        x += 1
+    else: # Break not called
+        sum = 0 # 
     assert sum == 3
     assert x == 2
 
