@@ -132,3 +132,10 @@ def test_dictionary_in_dictionary():
         city = info['city']
         age = info['age']
         print(f"\tCity: {city}, age: {age}")
+
+def test_create_dict_from_lists():
+    mon_nums = ['1','2','3']
+    mon_names = ['Jan','Feb','Mar']
+
+    months = dict(zip(mon_nums, mon_names))
+    assert months == {'1': 'Jan', '2': 'Feb', '3': 'Mar'}

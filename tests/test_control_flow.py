@@ -99,6 +99,17 @@ def test_use_while_to_modify_list():
 
     assert len(nums) == 5 # Removed all 3's
 
+def test_iterate_multiple_lists_with_zip():
+    l1 = ['a','b','c']
+    l2 = ['1','2','3']
+    l3 = ['x','y','z']
+    str = ''
+
+    for c1, c2, c3 in zip(l1, l2, l3):
+        str += f"{c1}{c2}{c3}"
+
+    assert str == 'a1xb2yc3z'
+
 def test_break():
     sum = 0
     x = 0
@@ -111,19 +122,25 @@ def test_break():
     assert x == 2
 
 def test_break_with_else():
-    """ This example is contrived and you'll never enter the else block, just wanted to show a way to check if break was never called """
-    """ You similarly also use an else to check for a break with a for loop """
+    # Use break with else structure if you wanat to run code if break never called
     sum = 0
-    x = 0
-    while x < 5:
-        sum += x
-        if sum >= 3:
+    for i in [1,2,3,4]:
+        sum += i
+        if sum >= 1000000:
             break
-        x += 1
     else: # Break not called
-        sum = 0 # 
-    assert sum == 3
-    assert x == 2
+        sum = 777
+    assert sum == 777
+
+    # Break with else is handy to run code if you never enter the loop
+    i = 0
+    nums = []
+    for num in nums:
+        i = num
+        break
+    else:
+        i = 7
+    assert i == 7
 
 def test_continue():
     sum = 0
