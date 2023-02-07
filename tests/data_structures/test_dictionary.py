@@ -1,19 +1,54 @@
+import copy
+
 # A dictionary is an unordered set of key/value pairs
 # Entire dictionary is enclosed in curly braces
 
-empty = {} # This is initialized as an empty dictionary
-empty_dict = dict()   # Can also use Python's built in function to create an empty dictionary
+def test_create_dictionary():
+    empty = {}            # Initialize an empty dictionary
+    empty_dict = dict()   # Can also use Python's built in function 
 
-# If using multiple lines, bue sure to indent values.
-# Good practice to keep comma after last entry.
-person = {
-    'name': 'Jim',
-    'gender': 'Male',
-    'city': 'Madison',
-    'age': 33,
-    }
+    # If using multiple lines, bue sure to indent values.
+    # Good practice to keep comma after last entry.
+    person = {
+        'name': 'Jim',
+        'gender': 'Male',
+        'city': 'Madison',
+        'age': 33,
+        }
+    
+    # Using dict() allows you to not use curly braces and quotes on the keys
+    person = dict(name='Jim', gender='Male', city='Madison', age=33)
+    assert person == {'name': 'Jim', 'gender': 'Male', 'city': 'Madison', 'age': 33}
+
+def test_create_dict_from_list():
+    # This converts a lists of two-element list into a dict
+    # This can also be done with a list of two-element tuples, a tuple of two-element lists, etc.
+    list = [['a','b'], ['c','d'], ['e','f']]
+    d = dict(list)
+    assert d == {'a': 'b', 'c': 'd', 'e': 'f'}
+
+def test_get_dict_length():
+    letters = {'a': 'b', 'c': 'd', 'e': 'f'}
+    assert 3 == len(letters)
+
+def test_get_all_keys():
+    letters = {'a': 'b', 'c': 'd', 'e': 'f'}
+    letters_dict_keys = letters.keys() # keys() returns dict_keys() which is iterable view of keys, use list() to get a list of keys
+    keys_list = list(letters_dict_keys)
+    assert keys_list == ['a', 'c', 'e']
+
+def test_get_all_values():
+    letters = {'a': 'b', 'c': 'd', 'e': 'f'}
+    values_list = list(letters.values())
+    assert values_list == ['b', 'd', 'f']
+
+def test_get_all_key_value_pairs():
+    letters = {'a': 'b', 'c': 'd', 'e': 'f'}
+    key_value_list = list(letters.items())
+    assert key_value_list == [('a','b'), ('c','d'), ('e','f')]
 
 def test_access_value():
+    person = {'name': 'Jim', 'gender': 'Male', 'city': 'Madison', 'age': 33}
     name = person['name']
     assert name == 'Jim'
 
@@ -25,25 +60,42 @@ def test_get_to_access_value_or_set_default():
     assert 'red' == house.get('color')      # You don't have to specify a default with get()
     assert None == house.get('wine cellar') # If no default specified and key doesn't exist, get() returns None
 
-
 def test_add_key_value():
+    person = {'name': 'Jim', 'gender': 'Male', 'city': 'Madison', 'age': 33}
     person['state'] = 'WI'
     state = person['state']
     assert state == 'WI'
 
-def test_remove_key_value():
+def test_remove_item_with_del():
     house = {'color': 'red', 'bedrooms': 3}
     assert house['bedrooms'] == 3
     del house['bedrooms'] # Specify key to remove key/value pair
     assert 'bedrooms' not in house
 
+def test_remove_item_with_pop():
+    house = {'color': 'red', 'bedrooms': 3}
+    assert house['bedrooms'] == 3
+    house.pop('bedrooms') # Specify key to remove key/value pair
+    assert 'bedrooms' not in house
+
+def test_remove_all_items_with_clear():
+    house = {'color': 'red', 'bedrooms': 3}
+    house.clear()
+    assert house == {}
+
 def test_modify_value():
+    person = {'name': 'Jim', 'gender': 'Male', 'city': 'Madison', 'age': 33}
     person['age'] += 1
     person['name'] = 'James'
     assert person['age'] == 34
     assert person['name'] == 'James'
 
 def test_check_key_existence():
+    person = {'name': 'Jim', 'gender': 'Male', 'city': 'Madison', 'age': 33}
+    # Accessing person['employer'] gives error if key doesn't exist
+    # When using get(), if key doesn't exist, None is returned
+    assert None == person.get('employer')
+
     # You can't do an operation on an uninitialized value
     # person['Dependants'] += 1
     # person['Dependants'] would first need to be initialized:
@@ -132,6 +184,38 @@ def test_dictionary_in_dictionary():
         city = info['city']
         age = info['age']
         print(f"\tCity: {city}, age: {age}")
+
+def test_copy_dictionaries():
+    # Using assignment
+    d1 = {'a': 'b', 'c': 'd'}
+    d2 = d1     # Results in d1 and d2 pointing to same dict in memory
+    d1['c'] = 'z'
+    assert d2 == {'a': 'b', 'c': 'z'}
+
+    # Using copy(), works for immutable values like these
+    c1 = {'a': 'b', 'c': 'd'}
+    c2 = c1.copy()   # c1 and c2 point to different locations in memory
+    c1['c'] = 'x'
+    assert c2 == {'a': 'b', 'c': 'd'}
+
+    # Using deepcopy(), works for mutable values
+    b1 = {'a': 'b', 'c': ['m','n']}
+    b2 = copy.deepcopy(b1)
+    b1['c'][1] = 'o'
+    assert b1 == {'a': 'b', 'c': ['m','o']}
+    assert b2 == {'a': 'b', 'c': ['m','n']}
+
+def test_combine_dictionaries():
+    # Using {**a, **b}
+    # For duplicate keys, keeps only second one. This is a shallow copy. See deepcopy() if you need full copies
+    d1 = {'a': 'b', 'c': 'd'}
+    d2 = {'c': 'g', 'e': 'f'}
+    d1_d2 = {**d1, **d2}
+    assert d1_d2 == {'a': 'b', 'c': 'g', 'e': 'f'}
+
+    # Using update()
+    d1.update(d2) # update() doesn't create new dict, it updates
+    assert d1 == {'a': 'b', 'c': 'g', 'e': 'f'}
 
 def test_create_dict_from_lists():
     mon_nums = ['1','2','3']
