@@ -34,6 +34,13 @@ def test_none():
     assert not None         # In a conditional test, None evaluates to False
     #assert None == False   # But None isn't equal to False (this will give an error)
     assert None != True     # But None isn't equal to True  either (which makes sense)
+    x = None       
+    if x is None: # This is the typical way to distinguish None from a boolean False
+        assert x is None 
+    elif x:
+        assert x is True
+    else:
+        assert x is False
 
 def test_type_converstion():
     assert bool(1) == True
@@ -80,3 +87,10 @@ def test_ints():
 # The 'pass' statement is a no-op, used where Python requires a statement, or in creating minimal classes
 def test_pass():
     pass # Remember to implement later
+
+def test_meta():
+    """ Reserved Python functions """
+    func_name = test_meta.__name__
+    docstring = test_meta.__doc__
+    assert func_name == 'test_meta'
+    assert docstring == ' Reserved Python functions '

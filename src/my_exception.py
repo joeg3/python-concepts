@@ -1,0 +1,3 @@
+
+class WrongTeamException(Exception):
+    pass
