@@ -1,3 +1,6 @@
+# A module is just any file with Python code
+# A package is just a subdirectory with .py files
+
 # There are three locations the interpreter searches when looking for a module:
 # 1. Your current working directory
 # 2. Your interpreter's site-packages locations. These are folders that contain any thire-party Python modules
