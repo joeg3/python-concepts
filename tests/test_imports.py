@@ -41,8 +41,8 @@ def test_verify_imports():
     path.abspath('.')                                 # path is a submodule of os, so need dot notation to access its functions
 
 def test_verify_class_imports():
-    p = Person('Mary', 44)
+    p = Person('Mary', 44, 'Itron')
     s = Student('Alice', 22, 1, 'UofM')
     d1 = dc()
     d2 = MyClassWithDefaultConstructor()
-    ec.Person('Greg', 66)
+    ec.Person('Greg', 66, 'IBM')
