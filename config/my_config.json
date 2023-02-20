@@ -1,0 +1,12 @@
+{
+    "__comment": "Hack for adding comments since they are not allowed in JSON",
+    "name": {
+        "first-name": "Fred",
+        "last-name": "Smith"
+    },
+    "person-info": {
+        "age": 44,
+        "employed": true,
+        "pets": null
+    }
+}

@@ -1,0 +1,8 @@
+# Allowed to have comments in yaml
+name:
+  first-name: "Fred"
+  last-name: "Smith"
+person-info:
+  age: 44
+  employed: True
+  pets: null

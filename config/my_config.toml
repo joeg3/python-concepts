@@ -1,0 +1,9 @@
+# Allowed to have comments in .toml file
+[name]
+first-name = "Fred"
+last-name = "Smith"
+
+[person-info]
+age = 44
+employed = true
+#pets = null
