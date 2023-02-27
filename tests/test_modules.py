@@ -1,3 +1,6 @@
+# A module is just any file with Python code
+# A package is just a subdirectory with .py files
+
 # There are three locations the interpreter searches when looking for a module:
 # 1. Your current working directory
 # 2. Your interpreter's site-packages locations. These are folders that contain any thire-party Python modules
@@ -5,58 +8,31 @@
 # 3. The standard library
 # The interpreter looks in your current working directory first.
 
-# Two ways to import. The first one, we would call os.getcwd(), the second one, we can just do getcwd().
-# Note in the second one, os is not visible, just getcwd().
-# The first way is sometimes better because if there was another module where we imported getcwd, Python wouldn't 
-# know from which module we want to invoke getcwd().
-import os             # Import os module, would have to call os.getcwd() or os.path.abspath()
-from os import getcwd # Import getcwd() function from os module, can call getcwd()
-from os import path   # Import path submodule from os module, can call path.abspath()
+# For specific mechanics of importing, see src/calc.py which itself imports from calc_module.py
 
-import datetime
-import random
-import sys
-import time
+from src import calc
 
-# Module terminology:
-# from <standard library module> import <submodule>
-# import <standard library module>
+def test_import_module():
+    """ Look at src/calc.py, which imports calc_module """
+    result = calc.remainder_alert(3, 2)
+    assert result == '@@'
 
-def test_working_dir():
-    cwd = getcwd()
-    print(cwd)
-    # Or using other way to import
-    cwd = os.getcwd()
-    
+def test_import_specific_function():
+    """ Look at src/calc.py, which imports specific function calc_exponent from module """
+    result = calc.square_number(3)
+    assert result == 9
 
-def test_python_level():
-    assert sys.version_info[0] >= 3
+def test_import_module_with_alias():
+    """ Look at src/calc.py, which imports calc_module and gives it alias cm """
+    result = calc.cube_number(2)
+    assert result == 8
 
-def test_environment_variables():
-    os.environ # All the system's environment variables
-    os.getenv('HOME') # Just the HOME environment variable
+def test_import_specific_function_with_alias():
+    """ Look at src/calc.py, which imports specific function right_triangle_area from module and gives it alias rta """
+    result = calc.get_right_triangle_area(3, 2)
+    assert result == 3
 
-def test_datetime_current_minute():
-    minute = datetime.datetime.now().minute
-    assert minute < 60
-
-def test_datetime():
-    datetime.date.today() # This returns a weird format: datetime.date(2002, 6, 30)
-
-    # These return an integer
-    datetime.date.today().day
-    datetime.date.today().month
-    datetime.date.today().year
-
-    datetime.date.isoformat(datetime.date.today())
-
-    time.strftime("%H:%M") # Return something like: 17:33
-    time.strftime("%A:%p") # Return something like: Tuesday PM
-
-def test_sleep():
-    time.sleep(2) # Sleep for 2 seconds
-
-def test_random_int():
-    x = random.randint(1, 10) # Returns random integer from the inclusive range
-    assert x >= 1
-    assert x <= 10
+def test_import_all_functions_of_module():
+    """ Look at src/calc.py, which uses an asterisk to import all functions from module calc_module """
+    result = calc.get_rectangle_area(3, 2)
+    assert result == 6
