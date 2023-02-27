@@ -10,6 +10,9 @@ from src.calc_module import * # Import all functions of module
 # !!!!! The previous line, importing all functions of module isn't recommended because of the potential for name collisions.
 # It's recommended to import the functions you'll use, or import the entire module and use dot notation.
 
+# Import from package that only exists in git (not in PyPi), see 'python-example-module' in pyproject.toml
+from fakeutils.name_faker import NameFaker
+
 # Note, some modules have submodules
 from os import path   # Import the path submodule from the os module, can call path.abspath()
 
@@ -46,3 +49,11 @@ def test_verify_class_imports():
     d1 = dc()
     d2 = MyClassWithDefaultConstructor()
     ec.Person('Greg', 66, 'IBM')
+
+def test_package_from_git():
+    nf = NameFaker()
+    name = nf.get_fake_name()
+    names = name.split(' ')
+    assert len(names) == 2
+    assert names[0].isalpha()
+    assert names[1].isalpha()
