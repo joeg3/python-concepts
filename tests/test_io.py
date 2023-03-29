@@ -1,5 +1,8 @@
 import json
+from datetime import datetime
+from os import scandir
 from pathlib import Path
+from time import sleep
 import pprint
 import pytest
 
@@ -85,6 +88,21 @@ def test_read_file_with_try_except_block(read_file_name):
         print(f"Sorry, file {path} doesn't exist.")
     else:
         assert contents == 'a\nb\nc'
+
+def test_read_files_in_downloads_folder():
+    now = datetime.today()
+    sleep(10) # Manually create file in download folder so we have one after timestamp from previous line
+    downloads_folder = str(Path.home() / "Downloads")
+    dir_items = scandir(downloads_folder)
+    for item in dir_items:
+        if item.is_file():
+            file_name = item.name
+            last_modified = datetime.utcfromtimestamp(item.stat().st_mtime)
+            if last_modified > now:
+                print("New file >>>>>>>>>>>>", file_name, last_modified)
+            else:
+                print("Old file <<<<<<<<<<<<", file_name, last_modified)
+            # you can filter here unwanted files older than X
 
 ################## Writing Files #######################
 def test_write_string_to_file(write_file_name):
