@@ -18,8 +18,8 @@ def test_get_python_version():
     assert version[0] == '3'
 
 def test_get_version_of_package():
-    pytest_version = version('pytest') # Returns something like: 7.1.3
-    assert pytest_version[0] == '7'
+    pytest_version = version('pytest') # Returns something like: 8.1.1
+    assert pytest_version[0] == '8'
 
 def test_environment_variables():
     os.environ # All the system's environment variables
